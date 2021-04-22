@@ -25,14 +25,28 @@ ggplot(data = ci_np, aes(x = year, y = visitors)) + geom_line()
 
 ```{r}
 gg_base <- ggplot(data = ci_np, aes(x = year, y = visitors))
-#gg_base + geom_point()
+gg_base + geom_point( 
+  aes(size = visitors,
+      color = visitors),
+    alpha = 0.5
+) + 
+theme_minimal()
 #gg_base + geom_col()
-#gg_base + geom_point(
-  #aes(size = visitors,
-   #   color = visitors),
-  #alpha = 0.5
-#)
-gg_base + geom_col(aes(fill = visitors))
+gg_base + geom_point(
+  aes(size = visitors,
+     color = visitors),
+  alpha = 0.5
+)
+#gg_base + geom_col(aes(fill = visitors))
+gg_base + 
+  geom_line(linetype = "dotted") + 
+  theme_bw() + 
+  labs(
+    x = "Year",
+    y = "Annual Park Visitors",
+    title = "Channel Islands NP Visitation",
+    subtitle = "(1963 - 2016)"
+  )
 ```
 
 
